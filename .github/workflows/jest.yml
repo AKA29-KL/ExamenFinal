@@ -24,8 +24,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Jest explicitly
-        run: npm install --save-dev jest
+      - name: Vérification Jest
+        run: npx jest --version
+
+      - name: Debug Node.js et Jest
+        run: |
+          node -v
+          npm -v
+          npx jest --version
 
       - name: Run Jest tests
-        run: npm test
+        run: npx jest --testPathIgnorePatterns="test/e2e/"

@@ -8,6 +8,11 @@
     "test:bdd": "cucumber-js ./test/bdd/features/*.feature --require ./test/bdd/step_definitions/*.js",
     "test:e2e": "playwright test test/e2e/"
   },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/test/e2e/"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

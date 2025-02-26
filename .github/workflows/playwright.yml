@@ -33,12 +33,18 @@ jobs:
       - name: Start Server
         run: npm start &
 
-      - name: Wait for server ready
-        run: sleep 10
+      - name: Wait for Server to be Ready
+        run: |
+          echo "Waiting for server to be ready..."
+          for i in {1..30}; do
+            curl --silent --head http://localhost:3000/ && echo "Server is up!" && exit 0
+            echo "Waiting..."
+            sleep 2
+          done
+          echo "Server did not start in time!" && exit 1
 
       - name: Run Playwright tests (Headless mode)
         run: xvfb-run --auto-servernum -- npx playwright test test/e2e/
-
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v4

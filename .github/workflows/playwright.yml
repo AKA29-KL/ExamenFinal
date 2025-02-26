@@ -31,17 +31,20 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Start Server
-        run: npm start &
+        run: npm start > server.log 2>&1 &
 
-      - name: Wait for Server to be Ready
+      - name: Debug Server Logs (5s delay)
+        run: sleep 5 && cat server.log
+
+      - name: Wait for Server to be Ready (max 2 min)
         run: |
           echo "Waiting for server to be ready..."
-          for i in {1..30}; do
-            curl --silent --head http://localhost:3000/ && echo "Server is up!" && exit 0
-            echo "Waiting..."
+          for i in {1..60}; do
+            curl --silent --head http://localhost:3000/ && echo "✅ Server is up!" && exit 0
+            echo "⏳ Waiting... ($((i*2))s)"
             sleep 2
           done
-          echo "Server did not start in time!" && exit 1
+          echo "❌ Server did not start in time!" && exit 1
 
       - name: Run Playwright tests (Headless mode)
         run: xvfb-run --auto-servernum -- npx playwright test test/e2e/

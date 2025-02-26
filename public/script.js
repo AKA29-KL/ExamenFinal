@@ -80,8 +80,7 @@ window.modifierContact = async (id) => {
     }
 };
 
-//  Supprimer un contact
-// ✅ Correction : Supprimer un contact avec vérification
+// Supprimer un contact avec vérification
 window.supprimerContact = async (id) => {
   console.log("Tentative de suppression du contact ID:", id);
 
@@ -94,10 +93,10 @@ window.supprimerContact = async (id) => {
           console.error("Erreur lors de la suppression !");
       }
 
-      await new Promise(resolve => setTimeout(resolve, 1000)); // ✅ Pause pour éviter un bug d'affichage
-      await chargerContacts(); // ✅ Mise à jour après suppression
+      await new Promise(resolve => setTimeout(resolve, 1000)); //  Pause pour éviter un bug d'affichage
+      await chargerContacts(); //  Mise à jour après suppression
 
-      // ✅ Vérification après suppression
+      //  Vérification après suppression
       setTimeout(async () => {
           const contacts = await fetch('/api/contacts').then(res => res.json());
           console.log("Liste des contacts après suppression:", contacts);

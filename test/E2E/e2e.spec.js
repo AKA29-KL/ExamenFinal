@@ -1,4 +1,4 @@
-/*const { test, expect } = require('@playwright/test');
+const { test, expect } = require('@playwright/test');
 
 const URL = 'http://localhost:3000';
 
@@ -45,4 +45,4 @@ test('should delete a contact', async ({ page }) => {
 
     await page.waitForTimeout(1000); // Pause pour attendre la suppression
     await expect(page.locator('tr:has-text("Jean DupontModifié")')).toHaveCount(0);
-});*/
+});

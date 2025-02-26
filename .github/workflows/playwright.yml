@@ -10,7 +10,6 @@ on:
 
 jobs:
   playwright-tests:
-    timeout-minutes: 30
     runs-on: ubuntu-latest
 
     steps:
@@ -25,17 +24,20 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Fix Playwright permissions
+        run: chmod +x node_modules/.bin/playwright
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
       - name: Start Server
         run: npm start &
-      
+
       - name: Wait for server ready
-        run: sleep 5
+        run: sleep 10
 
       - name: Run Playwright tests
-        run: npm run test:e2e
+        run: npx playwright test test/e2e/
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
@@ -43,5 +45,3 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report/
-
-          

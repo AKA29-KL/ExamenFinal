@@ -10,7 +10,9 @@
   },
   "jest": {
     "testPathIgnorePatterns": [
-      "<rootDir>/test/e2e/"
+      "<rootDir>/test/e2e/",
+      "<rootDir>/tests/",
+    "<rootDir>/tests-examples/"
     ]
   },
   "keywords": [],

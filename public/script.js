@@ -2,7 +2,7 @@ const formContact = document.getElementById('formContact');
 const contactId = document.createElement('input');
 contactId.type = 'hidden';
 contactId.id = 'contactId';
-formContact.prepend(contactId);
+formContact.prepend(contactId); //  Ajouter l'ID au formulaire
 
 const nom = document.getElementById('nom');
 const prenom = document.getElementById('prenom');

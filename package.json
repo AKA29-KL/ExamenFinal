@@ -2,20 +2,20 @@
   "name": "examenfinal",
   "version": "1.0.0",
   "main": "index.js",
-"scripts": {
-  "test": "jest",
-  "start": "node server.js",
-  "test:bdd": "cucumber-js ./test/bdd/features/*.feature --require ./test/bdd/step_definitions/*.js",
-  "test:e2e": "playwright test test/e2e/"
-}
-
-,
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js",
+    "test:bdd": "cucumber-js ./test/bdd/features/*.feature --require ./test/bdd/step_definitions/*.js",
+    "test:e2e": "playwright test test/e2e/"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.5",
     "jest": "^29.7.0"
   }
 }
